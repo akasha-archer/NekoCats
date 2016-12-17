@@ -4,14 +4,12 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import nyc.c4q.akashaarcher.nekocats.model.Cat;
 
-/**
- * Created by Akasha on 12/15/16.
- */
 
 public class CatAdapter extends RecyclerView.Adapter {
 
@@ -43,7 +41,7 @@ public class CatAdapter extends RecyclerView.Adapter {
             new Cat("Cat #23", R.drawable.cat23),
             new Cat("Cat #24", R.drawable.cat24),
             new Cat("Cat #25", R.drawable.cat25)
-         );
+    );
 
 
     public CatAdapter(Context context) {

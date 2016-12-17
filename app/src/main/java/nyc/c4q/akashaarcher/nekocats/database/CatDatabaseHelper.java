@@ -17,6 +17,21 @@ public class CatDatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "cat.db";
     private static final int DATABASE_VERSION = 1;
 
+
+    // make your database instance a singleton instance across the entire application's lifecycle.
+    private static CatDatabaseHelper instance;
+
+
+    public static synchronized CatDatabaseHelper getInstance(Context context) {
+
+        // Use the application context, which will ensure that you
+        // don't accidentally leak an Activity's context.
+        if (instance == null) {
+            instance = new CatDatabaseHelper(context.getApplicationContext());
+        }
+        return instance;
+    }
+
     public CatDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -30,7 +45,6 @@ public class CatDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // this will ensure that all tables are created
         cupboard().withDatabase(db).createTables();
-        // add indexes and other database tweaks in this method if you want
     }
 
     @Override

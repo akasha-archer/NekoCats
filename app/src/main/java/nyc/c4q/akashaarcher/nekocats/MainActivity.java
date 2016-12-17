@@ -37,48 +37,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // setup database
-        CatDatabaseHelper dbHelper = new CatDatabaseHelper(this);
+        // get an instance of the DatabaseHelper
+        CatDatabaseHelper dbHelper = CatDatabaseHelper.getInstance(this);
         db = dbHelper.getWritableDatabase();
-        Toast.makeText(getApplicationContext(), "Database acquired", Toast.LENGTH_SHORT).show();
-
-
-        //adding cat images to list
-        catPics.add(R.drawable.cat1);
-        catPics.add(R.drawable.cat2);
-        catPics.add(R.drawable.cat3);
-        catPics.add(R.drawable.cat4);
-        catPics.add(R.drawable.cat5);
-        catPics.add(R.drawable.cat6);
-        catPics.add(R.drawable.cat7);
-        catPics.add(R.drawable.cat8);
-        catPics.add(R.drawable.cat9);
-        catPics.add(R.drawable.cat10);
-        catPics.add(R.drawable.cat11);
-        catPics.add(R.drawable.cat12);
-        catPics.add(R.drawable.cat13);
-        catPics.add(R.drawable.cat14);
-        catPics.add(R.drawable.cat15);
-        catPics.add(R.drawable.cat16);
-        catPics.add(R.drawable.cat17);
-        catPics.add(R.drawable.cat18);
-        catPics.add(R.drawable.cat19);
-        catPics.add(R.drawable.cat20);
-        catPics.add(R.drawable.cat21);
-        catPics.add(R.drawable.cat22);
-        catPics.add(R.drawable.cat23);
-        catPics.add(R.drawable.cat24);
-        catPics.add(R.drawable.cat25);
-
-
-        //adding Cats to the database
-        for (int i = 1; i < 26; i++) {
-            Cat newCat = new Cat("Cat #" + i, catPics.get(i - 1));
-            long id = cupboard().withDatabase(db).put(newCat);
-        }
 
         launchTestService();
     }
+
+    public Cat pickNewCat(List<Cat> catList) {
+        Random rand = new Random();
+        int min = 1;
+        int catNumber = rand.nextInt((catList.size()-min) + 1) + min;
+        Cat newCat = catList.get(catNumber);
+        catList.remove(catNumber);
+        return newCat;
+    }
+
+    private void addCat(Cat cat) {
+        cupboard().withDatabase(db).put(cat);
+    }
+
 
 
     public void launchTestService() {
