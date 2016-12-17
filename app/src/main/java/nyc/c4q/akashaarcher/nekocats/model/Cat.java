@@ -1,9 +1,6 @@
 package nyc.c4q.akashaarcher.nekocats.model;
 
 import android.support.annotation.DrawableRes;
-import android.widget.ImageView;
-
-import static android.R.attr.resource;
 
 /**
  * Created by Akasha on 12/15/16.
@@ -15,9 +12,6 @@ public class Cat {
     private String catNumber;
     private Integer catImage;
 
-    public Cat(String catNumber) {
-        this.catNumber = catNumber;
-    }
 
     public Cat(String catNumber, @DrawableRes Integer resource) {
         this.catNumber = catNumber;
