@@ -38,11 +38,5 @@ public class Cat {
         this.catImage = catImage;
     }
 
-    @Override
-    public String toString() {
-        return "Cat{" +
-                "catNumber='" + catNumber + '\'' +
-                ", catImage='" + catImage + '\'' +
-                '}';
-    }
+
 }

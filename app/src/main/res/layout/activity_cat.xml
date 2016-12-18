@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="@dimen/large_margin">
 
 
     <TextView
         android:text="Cat activity"
+        android:textSize="23sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:id="@+id/textView" />
+        android:layout_marginBottom="@dimen/large_margin"
+        android:id="@+id/tvTitle" />
 
     <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/tvTitle"
         android:id="@+id/rv_cats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
